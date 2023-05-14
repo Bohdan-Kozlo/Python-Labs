@@ -13,7 +13,8 @@ class Chair:
         self.__owner = owner
 
     def __str__(self):
-        return f"Id={self.__id}, Material={self.__material}, Max weight={self.__max_weight}, Owner={self.__owner}"
+        return f"Id={self.__id}, Material={self.__material}," \
+               f" Max weight={self.__max_weight}, Owner={self.__owner}"
 
     def occupy(self, owner):
         self.__owner = owner
