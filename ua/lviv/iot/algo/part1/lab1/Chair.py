@@ -4,61 +4,29 @@ class Chair:
     Similarly, the class has methods: occupy, release, is_occupied and the static method get_instance
     """
 
-    instance = None
+    __instance = None
 
     def __init__(self, id=1, material="wood", max_weight="150", owner="Bob"):
-        self.__id = id
-        self.__material = material
-        self.__max_weight = max_weight
-        self.__owner = owner
+        self.id = id
+        self.material = material
+        self.max_weight = max_weight
+        self.owner = owner
 
     def __str__(self):
-        return f"Id={self.__id}, Material={self.__material}," \
-               f" Max weight={self.__max_weight}, Owner={self.__owner}"
+        return f"Id={self.id}, Material={self.material}," \
+               f" Max weight={self.max_weight}, Owner={self.owner}"
 
     def occupy(self, owner):
-        self.__owner = owner
+        self.owner = owner
 
     def release(self):
-        self.__owner = None
+        self.owner = None
 
     def is_occupied(self):
-        return self.__owner is not None
-
-    @property
-    def id(self):
-        return self.__id
-
-    @id.setter
-    def id(self, value):
-        self.__id = value
-
-    @property
-    def material(self):
-        return self.__material
-
-    @material.setter
-    def material(self, value):
-        self.__material = value
-
-    @property
-    def max_weight(self):
-        return self.__max_weight
-
-    @max_weight.setter
-    def max_weight(self, value):
-        self.__max_weight = value
-
-    @property
-    def owner(self):
-        return self.__owner
-
-    @owner.setter
-    def owner(self, value):
-        self.__owner = value
+        return self.owner is not None
 
     @staticmethod
     def get_instance():
-        if Chair.instance is None:
+        if not Chair.__instance:
             Chair.instance = Chair()
-        return Chair.instance
+        return Chair.__instance
